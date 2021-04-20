@@ -10,8 +10,12 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  buildConfiguration: 'Release'
+- group: 'Gustav variable group'
+- name: 'buildConfiguration'
+  value: 'Release'
 
 steps:
+- script: echo $(buildConfiguration)
+- script: echo $(dbkey)
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
